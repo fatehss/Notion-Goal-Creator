@@ -3,19 +3,22 @@
     "results": [
         {
             "object": "page",
-            "id": "1b48041c-ec66-8125-8149-e9b560dd871d",
-            "created_time": "2025-03-12T22:26:00.000Z",
-            "last_edited_time": "2025-03-12T22:26:00.000Z",
+            "id": "1b58041c-ec66-8025-b72b-ff2407b2fb1c",
+            "created_time": "2025-03-13T11:31:00.000Z",
+            "last_edited_time": "2025-03-13T11:31:00.000Z",
             "created_by": {
                 "object": "user",
-                "id": "4940d26f-4677-4b93-aab2-30753491bcdf"
+                "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
             },
             "last_edited_by": {
                 "object": "user",
-                "id": "4940d26f-4677-4b93-aab2-30753491bcdf"
+                "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
             },
             "cover": null,
-            "icon": null,
+            "icon": {
+                "type": "emoji",
+                "emoji": "\ud83c\udfaf"
+            },
             "parent": {
                 "type": "database_id",
                 "database_id": "19b8041c-ec66-802e-af83-c88a76c98831"
@@ -26,12 +29,16 @@
                 "Last edited time": {
                     "id": "%3ANQB",
                     "type": "last_edited_time",
-                    "last_edited_time": "2025-03-12T22:26:00.000Z"
+                    "last_edited_time": "2025-03-13T11:31:00.000Z"
                 },
                 "Status": {
                     "id": "DYPe",
                     "type": "select",
-                    "select": null
+                    "select": {
+                        "id": "fdb4d059-3f49-4960-9f2e-84c98fdd4678",
+                        "name": "Not started",
+                        "color": "purple"
+                    }
                 },
                 "Rating": {
                     "id": "K%7BBH",
@@ -58,7 +65,126 @@
                 "Created time": {
                     "id": "aoIA",
                     "type": "created_time",
-                    "created_time": "2025-03-12T22:26:00.000Z"
+                    "created_time": "2025-03-13T11:31:00.000Z"
+                },
+                "Tags": {
+                    "id": "oHBv",
+                    "type": "multi_select",
+                    "multi_select": [
+                        {
+                            "id": "a72a18a6-64a7-466d-9ad2-0d56ec6952af",
+                            "name": "Sub-Goal",
+                            "color": "pink"
+                        }
+                    ]
+                },
+                "Deadline": {
+                    "id": "pmNF",
+                    "type": "date",
+                    "date": null
+                },
+                "Hours Spent": {
+                    "id": "tYF%5B",
+                    "type": "number",
+                    "number": null
+                },
+                "Estimated Hours": {
+                    "id": "vpd%7C",
+                    "type": "number",
+                    "number": null
+                },
+                "Project": {
+                    "id": "title",
+                    "type": "title",
+                    "title": [
+                        {
+                            "type": "text",
+                            "text": {
+                                "content": "Subgoal Template",
+                                "link": null
+                            },
+                            "annotations": {
+                                "bold": false,
+                                "italic": false,
+                                "strikethrough": false,
+                                "underline": false,
+                                "code": false,
+                                "color": "default"
+                            },
+                            "plain_text": "Subgoal Template",
+                            "href": null
+                        }
+                    ]
+                }
+            },
+            "url": "https://www.notion.so/Subgoal-Template-1b58041cec668025b72bff2407b2fb1c",
+            "public_url": null
+        },
+        {
+            "object": "page",
+            "id": "1b58041c-ec66-8076-9f2d-cfebf8979320",
+            "created_time": "2025-03-13T11:30:00.000Z",
+            "last_edited_time": "2025-03-13T11:31:00.000Z",
+            "created_by": {
+                "object": "user",
+                "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
+            },
+            "last_edited_by": {
+                "object": "user",
+                "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
+            },
+            "cover": null,
+            "icon": {
+                "type": "emoji",
+                "emoji": "\ud83d\uddde\ufe0f"
+            },
+            "parent": {
+                "type": "database_id",
+                "database_id": "19b8041c-ec66-802e-af83-c88a76c98831"
+            },
+            "archived": false,
+            "in_trash": false,
+            "properties": {
+                "Last edited time": {
+                    "id": "%3ANQB",
+                    "type": "last_edited_time",
+                    "last_edited_time": "2025-03-13T11:31:00.000Z"
+                },
+                "Status": {
+                    "id": "DYPe",
+                    "type": "select",
+                    "select": {
+                        "id": "fdb4d059-3f49-4960-9f2e-84c98fdd4678",
+                        "name": "Not started",
+                        "color": "purple"
+                    }
+                },
+                "Rating": {
+                    "id": "K%7BBH",
+                    "type": "number",
+                    "number": null
+                },
+                "Parent item": {
+                    "id": "Lkre",
+                    "type": "relation",
+                    "relation": [],
+                    "has_more": false
+                },
+                "Success": {
+                    "id": "XNCl",
+                    "type": "select",
+                    "select": null
+                },
+                "Sub-item": {
+                    "id": "YMQP",
+                    "type": "relation",
+                    "relation": [],
+                    "has_more": false
+                },
+                "Created time": {
+                    "id": "aoIA",
+                    "type": "created_time",
+                    "created_time": "2025-03-13T11:30:00.000Z"
                 },
                 "Tags": {
                     "id": "oHBv",
@@ -93,7 +219,7 @@
                         {
                             "type": "text",
                             "text": {
-                                "content": "Minimal task",
+                                "content": "Task Template",
                                 "link": null
                             },
                             "annotations": {
@@ -104,27 +230,27 @@
                                 "code": false,
                                 "color": "default"
                             },
-                            "plain_text": "Minimal task",
+                            "plain_text": "Task Template",
                             "href": null
                         }
                     ]
                 }
             },
-            "url": "https://www.notion.so/Minimal-task-1b48041cec6681258149e9b560dd871d",
+            "url": "https://www.notion.so/Task-Template-1b58041cec6680769f2dcfebf8979320",
             "public_url": null
         },
         {
             "object": "page",
             "id": "1b48041c-ec66-80db-84ee-e61e1506c57b",
             "created_time": "2025-03-12T21:30:00.000Z",
-            "last_edited_time": "2025-03-12T21:31:00.000Z",
+            "last_edited_time": "2025-03-13T11:17:00.000Z",
             "created_by": {
                 "object": "user",
                 "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
             },
             "last_edited_by": {
                 "object": "user",
-                "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
+                "id": "4940d26f-4677-4b93-aab2-30753491bcdf"
             },
             "cover": null,
             "icon": {
@@ -141,7 +267,7 @@
                 "Last edited time": {
                     "id": "%3ANQB",
                     "type": "last_edited_time",
-                    "last_edited_time": "2025-03-12T21:31:00.000Z"
+                    "last_edited_time": "2025-03-13T11:17:00.000Z"
                 },
                 "Status": {
                     "id": "DYPe",
@@ -3168,7 +3294,7 @@
             "object": "page",
             "id": "1ad8041c-ec66-80bc-85bc-ebdbe98af887",
             "created_time": "2025-03-05T22:12:00.000Z",
-            "last_edited_time": "2025-03-05T22:50:00.000Z",
+            "last_edited_time": "2025-03-12T22:28:00.000Z",
             "created_by": {
                 "object": "user",
                 "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
@@ -3192,7 +3318,7 @@
                 "Last edited time": {
                     "id": "%3ANQB",
                     "type": "last_edited_time",
-                    "last_edited_time": "2025-03-05T22:50:00.000Z"
+                    "last_edited_time": "2025-03-12T22:28:00.000Z"
                 },
                 "Status": {
                     "id": "DYPe",
@@ -7142,7 +7268,7 @@
             "object": "page",
             "id": "19d8041c-ec66-808e-80be-f423faf99125",
             "created_time": "2025-02-17T12:34:00.000Z",
-            "last_edited_time": "2025-02-17T12:47:00.000Z",
+            "last_edited_time": "2025-03-13T11:03:00.000Z",
             "created_by": {
                 "object": "user",
                 "id": "19bd872b-594c-8155-908d-0002ac8f4a07"
@@ -7166,7 +7292,7 @@
                 "Last edited time": {
                     "id": "%3ANQB",
                     "type": "last_edited_time",
-                    "last_edited_time": "2025-02-17T12:47:00.000Z"
+                    "last_edited_time": "2025-03-13T11:03:00.000Z"
                 },
                 "Status": {
                     "id": "DYPe",
@@ -9511,5 +9637,5 @@
     "has_more": false,
     "type": "page_or_database",
     "page_or_database": {},
-    "request_id": "7c9e64b0-1bbc-4bd7-899b-b4cf7f923cea"
+    "request_id": "d8e4c3f8-b79b-4afe-b34d-d1d8708057e9"
 }
