@@ -75,8 +75,8 @@ Record PDF metadata (filename, upload timestamp, user) in MongoDB.
         ]
     }
 
-If there is no goal explicitly provided, you can take the liberty to infer one from the input.
-REMEMBER TO RETURN THE OUTPUT AS A JSON OBJECT AS SPECIFIED ABOVE.
+If there is no goal explicitly provided, you can take the liberty to infer one from the input. NEVER call a task "task1", "task2", etc, they should be named descriptively. Same for goals and subgoals. 
+REMEMBER TO RETURN THE OUTPUT AS A JSON OBJECT AS SPECIFIED ABOVE. DO NOT RETURN ANY WHITESPACE, NEWLINES, DECORATORS, RESONSE DECLARATIONS (like ```json or ```)
 
 Here is the input to parse:
 """

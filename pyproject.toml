@@ -1,23 +1,23 @@
 [tool.poetry]
-package-mode = false
-
-[project]
 name = "notion-goal-creator"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "fateh",email = "fatehss@g.ucla.edu"}
-]
+description = "CLI tool to create structured goals in Notion"
+authors = ["fateh <fatehss@g.ucla.edu>"]
 readme = "README.md"
-requires-python = ">=3.12,<4.0"
-dependencies = [
-    "notion-client (>=2.3.0,<3.0.0)",
-    "python-dotenv (>=1.0.1,<2.0.0)",
-    "langgraph (>=0.3.8,<0.4.0)",
-    "groq (>=0.19.0,<0.20.0)",
-    "setuptools (>=76.0.0,<77.0.0)"
-]
+packages = [{include = "app"}]
+package-mode = true
 
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+notion-client = ">=2.3.0,<3.0.0"
+python-dotenv = ">=1.0.1,<2.0.0"
+langgraph = ">=0.3.8,<0.4.0"
+groq = ">=0.19.0,<0.20.0"
+setuptools = ">=76.0.0,<77.0.0"
+pydantic = ">=2.0.0,<3.0.0"
+
+[tool.poetry.scripts]
+notion_goal_create = "app.cli:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
