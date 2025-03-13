@@ -4,8 +4,11 @@ import os
 import json
 from pydantic import BaseModel
 from typing import Optional, List
+from langchain_core.output_parsers import JsonOutputParser
+from groq import Groq
+from app.prompts.goal_parser_prompt import GOAL_PARSER_PROMPT
 load_dotenv()
-print(f"NOTION_API_KEY: {os.getenv('NOTION_API_KEY')}")
+
 notion = Client(auth=os.getenv("NOTION_API_KEY"))
 database_id = os.getenv("NOTION_DATABASE_ID")
 
@@ -13,22 +16,13 @@ def get_all_pages(database_id: str):
     return notion.databases.query(database_id=database_id)
 
 
-response = get_all_pages(database_id)
+# response = get_all_pages(database_id)
 
-json_response = json.dumps(response, indent=4)
-# save to file
-with open("response.json", "w") as f:
-    f.write(json_response)  
-
-# create a page
-
-
-from notion_client import Client
-
+# json_response = json.dumps(response, indent=4)
+# # save to file
+# with open("response.json", "w") as f:
+#     f.write(json_response)  
 # Initialize the client with your integration token
-notion = Client(auth=os.getenv("NOTION_API_KEY"))
-
-
 
 def create_page(tag: str, title: str, parent_item = None):
     tag_to_emoji = {
@@ -88,12 +82,51 @@ def create_page(tag: str, title: str, parent_item = None):
     print(response)
     return response['id']
 
+def parse_goals_subgoals_tasks(input: str):
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    parser = JsonOutputParser()
+    completion = client.chat.completions.create(
+        model="qwen-qwq-32b",
+        messages=[
+            {"role": "system", "content": GOAL_PARSER_PROMPT},
+            {"role": "user", "content": input}
+        ],
+        reasoning_format="hidden",
+        response_format={"type": "json_object"}
+    )
+    return parser.parse(completion.choices[0].message.content)
 
 class PageNode(BaseModel):
     title: str
     children: Optional[List["PageNode"]] = None
 
 
+def create_page_tree(response: dict):
+    # create a page tree from the response
+    # the response is a dictionary with a goal key, which has a title and subgoals key, which has a list of subgoal dictionaries, which have a title and tasks key, which has a list of task strings
+    # we need to create a tree of PageNode objects from the response
+    # the tree should have the following structure:
+    created_pages = []
+    goal = response["goal"]
+
+    goal_page = create_page("Goal", goal["title"])
+    created_pages.append(goal_page)
+    for subgoal in goal["subgoals"]:
+        subgoal_page = create_page("Sub-Goal", subgoal["title"], goal_page)
+        created_pages.append(subgoal_page)
+        for task in subgoal["tasks"]:
+            task_page = create_page("Task", task, subgoal_page)
+            created_pages.append(task_page)
+    return created_pages
+
+
+def trash_pages(page_ids: List[str]):
+    for page_id in page_ids:
+        notion.request(
+            path=f"pages/{page_id}",
+            method="PATCH",
+            body={"archived": True}
+        )
 # def parse_goals_subgoals_tasks(response: dict):
 
 # # notion.request(
@@ -106,6 +139,3 @@ class PageNode(BaseModel):
 
 # print(json_response)
 
-if __name__ == "__main__":
-    # create_page("Task", "Some random task asdfasdf", "1b48041cec6680db84eee61e1506c57b")
-    x = PageNode(title="Some random task asdfasdf", children=[PageNode(title="Some random task asdfasdf")])
