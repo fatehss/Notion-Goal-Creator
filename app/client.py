@@ -86,7 +86,7 @@ def parse_goals_subgoals_tasks(input: str):
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     parser = JsonOutputParser()
     completion = client.chat.completions.create(
-        model="qwen-qwq-32b",
+        model=os.getenv("GROQ_MODEL"),
         messages=[
             {"role": "system", "content": GOAL_PARSER_PROMPT},
             {"role": "user", "content": input}
