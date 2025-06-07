@@ -24,12 +24,16 @@ def get_all_pages(database_id: str):
 #     f.write(json_response)  
 # Initialize the client with your integration token
 
-def create_page(tag: str, title: str, parent_item = None):
+def create_page(tag: str, title: str, parent_item = None, tags: Optional[List[str]] = None):
     tag_to_emoji = {
         "Task": "🗞️",
         "Goal": "🏟️",
         "Sub-Goal": "🎯",
     }
+
+    all_tags = [{"name": tag}]
+    if tags:
+        all_tags.extend([{"name": t} for t in tags])
 
 
     body = {
@@ -47,11 +51,7 @@ def create_page(tag: str, title: str, parent_item = None):
             },
             "Tags": {
                 "type": "multi_select",
-                "multi_select": [
-                    {
-                        "name": tag,
-                    }
-                ]
+                "multi_select": all_tags
             },
             "Status": {
                 "type": "select",
@@ -101,7 +101,7 @@ class PageNode(BaseModel):
     children: Optional[List["PageNode"]] = None
 
 
-def create_page_tree(response: dict):
+def create_page_tree(response: dict, tags: Optional[List[str]] = None):
     # create a page tree from the response
     # the response is a dictionary with a goal key, which has a title and subgoals key, which has a list of subgoal dictionaries, which have a title and tasks key, which has a list of task strings
     # we need to create a tree of PageNode objects from the response
@@ -109,13 +109,13 @@ def create_page_tree(response: dict):
     created_pages = []
     goal = response["goal"]
 
-    goal_page = create_page("Goal", goal["title"])
+    goal_page = create_page("Goal", goal["title"], tags=tags)
     created_pages.append(goal_page)
     for subgoal in goal["subgoals"]:
-        subgoal_page = create_page("Sub-Goal", subgoal["title"], goal_page)
+        subgoal_page = create_page("Sub-Goal", subgoal["title"], goal_page, tags=tags)
         created_pages.append(subgoal_page)
         for task in subgoal["tasks"]:
-            task_page = create_page("Task", task, subgoal_page)
+            task_page = create_page("Task", task, subgoal_page, tags=tags)
             created_pages.append(task_page)
     return created_pages
 

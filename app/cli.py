@@ -39,6 +39,7 @@ def main() -> int:
     """Main CLI function."""
     parser = argparse.ArgumentParser(description="Create structured goals in Notion")
     parser.add_argument("--input-file", type=str, help="Path to input file instead of interactive input")
+    parser.add_argument("--tag", action="append", help="Additional tag to add to all created pages. Can be specified multiple times.")
     args = parser.parse_args()
     
     try:
@@ -71,7 +72,7 @@ def main() -> int:
         
         # Create the pages
         print("Creating pages in Notion...")
-        created_pages = create_page_tree(parsed_goals)
+        created_pages = create_page_tree(parsed_goals, tags=args.tag)
         print(f"Successfully created {len(created_pages)} pages in Notion!")
         
         # Ask if user wants to revert
