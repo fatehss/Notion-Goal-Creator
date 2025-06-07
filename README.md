@@ -45,3 +45,9 @@ Once you have this configured, you can download the source files.
 Run `pip install -e .` to install!
 
 Packaged using Poetry.
+
+---
+
+Can now add tags using cli:
+
+`notion_goal_create --tag "Leetcode" --tag "Important"`
